@@ -24,17 +24,16 @@ public class AppTest {
     }
     @Test void tst2(){
         int[] b={2,4,7,8};
-        Exception exception = assertThrows(RuntimeException.class, () -> {
+        Exception exception = assertThrows(Exception.class, () -> {
             App.find(b,7,6);
         });
-    
         String expectedMessage = "Wrong min and max value!";
         String actualMessage = exception.getMessage();
     
         assertTrue(actualMessage.contains(expectedMessage));
     }
     @Test void tst3(){
-        Exception exception = assertThrows(RuntimeException.class, () -> {
+        Exception exception = assertThrows(Exception.class, () -> {
             App.find(null,7,6);
         });
     
@@ -44,8 +43,9 @@ public class AppTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
     @Test void tst4(){
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            App.find(new int[0],7,6);
+        int[] ar= new int[0];
+        Exception exception = assertThrows(Exception.class, () -> {
+            App.find(ar,5,6);
         });
     
         String expectedMessage = "Empty array!";
